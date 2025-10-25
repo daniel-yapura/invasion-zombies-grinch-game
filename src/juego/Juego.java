@@ -13,6 +13,12 @@ public class Juego extends InterfaceJuego
 	
 	// Variables y métodos propios de cada grupo
 	// ...
+	int columnas = 9;
+    int filas = 5;
+    int anchoCasilla;
+    int altoCasilla;
+    int inicioX;
+    int inicioY;
 	
 	Juego()
 	{
@@ -21,6 +27,12 @@ public class Juego extends InterfaceJuego
 		
 		// Inicializar lo que haga falta para el juego
 		// ...
+		// Calculamos las medidas del tablero UNA SOLA VEZ en el constructor
+        this.anchoCasilla = entorno.ancho() / columnas;
+        this.altoCasilla = this.anchoCasilla; // Casillas cuadradas
+        int altoTotalTablero = filas * altoCasilla;
+        this.inicioX = 0;
+        this.inicioY = entorno.alto() - altoTotalTablero;
 
 		// Inicia el juego!
 		this.entorno.iniciar();
@@ -41,44 +53,13 @@ public class Juego extends InterfaceJuego
 	}
 	
 	void dibujarTablero() {
-	    // --- 1. DEFINIR PROPIEDADES ---
-	    int columnas = 9;
-	    int filas = 5;
-	    int anchoCasilla;
-	    int altoCasilla;
-	    int anchoTotalTablero;
-	    int altoTotalTablero;
-	       
-	    // --- 2. CALCULAR TAMAÑOS DINÁMICOS ---
 	    
-	    // El ancho de la casilla se calcula dividiendo el ancho de la ventana por las columnas.
-	    // Esto asegura que el tablero "ocupe todo el ancho".
-	    anchoCasilla = entorno.ancho()/columnas;
-	    
-	    // Hacemos que el alto de la casilla sea igual al ancho
-	    // para mantener las casillas cuadradas (como en el juego original).
-	    altoCasilla = anchoCasilla;
-	    
-	    // Calculamos el tamaño total del tablero (Servirá para más adelante)
-	    anchoTotalTablero = columnas * anchoCasilla;
-	    altoTotalTablero = filas * altoCasilla;
-	  
 
-	    // --- 3. DIBUJAR LA GRILLA ---
-	    // El tablero empieza en X=0 (borde izquierdo)
-	    int inicioX = 0;
-	    
-	    
-	    // El espacio superior que dejamos para la UI (cartas, puntaje, etc.)
-	    int margenSuperior = entorno.alto()-altoTotalTablero;
-	    // Y empieza justo debajo de nuestro margen superior
-	    int inicioY = margenSuperior ;
-
-	    // Estos for anidados sirven para dibujar la grilla, simulan una matriz de f x c  
+	    // Estos for ahora usan las variables de instancia (this.inicioX, this.anchoCasilla, etc.) 
 	    for (int f = 0; f < filas; f++) {
 	        for (int c = 0; c < columnas; c++) {
 	        	
-	        	// Calculamos el centro de la casilla (Servirá para más adelante)
+	        	// Calculamos el centro de la casilla
 	            double x = inicioX + c * anchoCasilla + anchoCasilla / 2;
 	            double y = inicioY + f * altoCasilla + altoCasilla / 2;
 	            // Dibujamos rectangulos de un color en las filas-columnas pares y en filas-columnas impares
