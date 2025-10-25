@@ -1,5 +1,6 @@
 package juego;
 
+import java.awt.Color;
 import java.awt.Image;
 import entorno.Herramientas;
 import entorno.Entorno;
@@ -18,8 +19,6 @@ public class RoseBlade {
     public RoseBlade(double x, double y) {
         this.x = x;
         this.y = y;
-        // Asegúrate de tener una imagen "rose.png" en tu proyecto
-        entorno.dibujarCirculo(this.x, this.y, 45, Color.RED); 
         
         // Al crearse, la planta aún no ha disparado.
         this.bola = null; 
@@ -29,7 +28,7 @@ public class RoseBlade {
      * Dibuja la planta en la pantalla usando el entorno.
      */
     public void dibujarse(Entorno entorno) {
-        entorno.dibujarImagen(this.imagen, this.x, this.y, 0, 0.1); // 0.1 es la escala
+    	entorno.dibujarCirculo(this.x, this.y, 45, Color.RED); // 0.1 es la escala
     }
     
     /**

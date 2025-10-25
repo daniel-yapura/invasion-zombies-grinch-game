@@ -1,3 +1,5 @@
+package juego;
+
 import java.awt.Color;
 
 import entorno.Entorno;
@@ -6,8 +8,8 @@ public class ZombieGrinch {
 	double x;
 	double y;
 	double Velocidad;
-	//getters y setters:
 	
+	//getters y setters:
 	public double getX() {
 		return x;
 		}
@@ -40,6 +42,6 @@ public class ZombieGrinch {
 	public void dibujarse (Entorno entorno) {
 		entorno.dibujarCirculo(this.x, this.y, 45, Color.GREEN);
 		entorno.dibujarCirculo(this.x, this.y, 35, Color.GRAY);
-		entorno.dibujarCirculo(this.x, this,y, 25, Color.BLACK);
+		entorno.dibujarCirculo(this.x, this.y, 25, Color.BLACK);
 		entorno.dibujarCirculo(this.x, this.y, 15, Color.MAGENTA);}
 	}
